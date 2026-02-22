@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card" style="max-width:500px;">
+    <h2>📄 Submit Journal</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label>Article Title</label>
+        <input type="text" name="title" required
+               style="width:100%;padding:12px;border-radius:10px;margin-bottom:20px;">
+
+        <label>Upload PDF</label>
+        <input type="file" name="pdf" required
+               style="width:100%;margin-bottom:25px;">
+
+        <button class="btn" style="width:100%;">🚀 Submit</button>
+    </form>
+</div>
+
+{% endblock %}

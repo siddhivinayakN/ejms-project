@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <h2>🧑‍⚖️ Reviewer Dashboard</h2>
+
+    {% if articles %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Action</th>
+        </tr>
+
+        {% for article in articles %}
+        <tr>
+            <td>{{ article.title }}</td>
+            <td>
+                <a class="btn" href="/reviews/submit/{{ article.id }}/">
+                    Review
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p style="text-align:center;color:#777;">No articles waiting for review.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

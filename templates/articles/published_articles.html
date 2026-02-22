@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <h2>📚 Published Journals</h2>
+
+    {% if articles %}
+        {% for article in articles %}
+        <div style="margin-bottom:20px;padding:20px;border-radius:16px;background:#f6f7ff;">
+            <h3>{{ article.title }}</h3>
+            <p>Published on {{ article.submitted_on|date:"d M Y" }}</p>
+
+            <a class="btn dark" target="_blank" href="{% url 'preview_pdf' article.id %}">
+                👁 Preview
+            </a>
+            <a class="btn" href="{{ article.pdf.url }}" download>
+                ⬇ Download
+            </a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align:center;color:#777;">No published journals yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <h2>📊 My Submitted Articles</h2>
+
+    {% if articles %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Submitted</th>
+        </tr>
+
+        {% for article in articles %}
+        <tr>
+            <td>{{ article.title }}</td>
+            <td><span class="badge {{ article.status }}">{{ article.status }}</span></td>
+            <td>{{ article.submitted_on|date:"d M Y" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p style="text-align:center;color:#777;">No articles submitted yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
